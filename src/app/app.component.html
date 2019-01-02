@@ -1,0 +1,114 @@
+<!-- main app container -->
+
+<div class="jumbotron">
+  <div class="container">
+    <h1 style="text-align: center">Tapiaco Order Management</h1>
+    <hr class="style-two">
+    <div class="row">
+      <div class="col-md-6">
+        <h3 style="text-align: center">Farmer Details</h3>
+        <form [formGroup]="farmerForm" (ngSubmit)="onSubmitFarmerDetails()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="farmerName" class="form-control" [ngClass]="{ 'is-invalid': farmerFormSubmitted && f.farmerName.errors }"
+            />
+            <div *ngIf="farmerFormSubmitted && f.farmerName.errors" class="invalid-feedback">
+              <div *ngIf="f.farmerName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Address</label>
+            <input type="text" formControlName="farmerAddress" class="form-control" [ngClass]="{ 'is-invalid': farmerFormSubmitted && f.farmerAddress.errors }"
+            />
+            <div *ngIf="farmerFormSubmitted && f.farmerAddress.errors" class="invalid-feedback">
+              <div *ngIf="f.farmerAddress.errors.required">Address is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" formControlName="farmerPhoneNumber" class="form-control" [ngClass]="{ 'is-invalid': farmerFormSubmitted && f.farmerPhoneNumber.errors }"
+            />
+            <div *ngIf="farmerFormSubmitted && f.farmerPhoneNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.farmerPhoneNumber.errors.required">Phone Number is required</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="text-align: center">
+            <button class="btn btn-primary">Save Farmer </button>
+          </div>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h3 style="text-align: center">Broker Details</h3>
+        <form [formGroup]="brokerForm" (ngSubmit)="onSubmitBrokerDetails()">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" formControlName="brokerName" class="form-control" [ngClass]="{ 'is-invalid': brokerFormSubmitted && b.brokerName.errors }"
+            />
+            <div *ngIf="brokerFormSubmitted && b.brokerName.errors" class="invalid-feedback">
+              <div *ngIf="b.brokerName.errors.required">First Name is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Address</label>
+            <input type="text" formControlName="brokerAddress" class="form-control" [ngClass]="{ 'is-invalid': brokerFormSubmitted && b.brokerAddress.errors }"
+            />
+            <div *ngIf="brokerFormSubmitted && b.brokerAddress.errors" class="invalid-feedback">
+              <div *ngIf="b.brokerAddress.errors.required">Address is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Phone Number</label>
+            <input type="text" formControlName="brokerPhoneNumber" class="form-control" [ngClass]="{ 'is-invalid': brokerFormSubmitted && b.brokerPhoneNumber.errors }"
+            />
+            <div *ngIf="brokerFormSubmitted && b.brokerPhoneNumber.errors" class="invalid-feedback">
+              <div *ngIf="b.brokerPhoneNumber.errors.required">Phone Number is required</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="text-align: center">
+            <button class="btn btn-primary">Save Broker</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <hr class="style-two">
+        <h3 style="text-align: center">Order Details</h3>
+        <form [formGroup]="orderForm" (ngSubmit)="onSubmitOrderDetails()">
+          <div class="form-group">
+            <label>Broker Amount per Ton</label>
+            <input type="text" formControlName="brokerAmountPerTon" class="form-control" />
+          </div>
+          <div class="form-group">
+              <label>Point At Field</label>
+            <input type="text"  formControlName="pointAtField" class="form-control" [ngClass]="{ 'is-invalid': orderFormSubmitted && o.pointAtField.errors }"
+            />
+            <div *ngIf="orderFormSubmitted && o.pointAtField.errors" class="invalid-feedback">
+              <div *ngIf="o.pointAtField.errors.required">Point At Field is required</div>
+            </div>
+          </div>
+          <div class="form-group">
+              <label>Point Rate per Ton</label>
+            <input type="text" formControlName="pointRatePerTon" class="form-control" [ngClass]="{ 'is-invalid': orderFormSubmitted && o.pointRatePerTon.errors }"
+            />
+            <div *ngIf="orderFormSubmitted && o.pointRatePerTon.errors" class="invalid-feedback">
+              <div *ngIf="o.pointRatePerTon.errors.required">Point Rate per Ton is required</div>
+            </div>
+          </div>
+
+          <div class="form-group" style="text-align: center">
+            <button class="btn btn-primary">Save Order</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row" >
+      <div class="col-md-12">
+        <app-cultivationteam (orderWantsToKnowCultivationDataEvent)="orderWantsToKnowCultivationDataFn($event)"></app-cultivationteam>
+      </div>
+    </div>
+
+  </div>
+</div>
