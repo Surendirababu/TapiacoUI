@@ -34,11 +34,11 @@ export class OtherexpensesComponent implements OnInit {
   showOtherExpenses() {
     this.showOtherExpensesDetail = true;
     this.otherExpenses.push(new OtherExpensesModel(this.expenseDoneFor,this.extraAmount,this.expenseDoneType));
-    this.otherExpenses.push(new OtherExpensesModel(this.expenseDoneFor,this.extraAmount,this.expenseDoneType));
   }
   saveOtherExpenseDetails() {
 
     this.otherExpenseResponse =  new OtherExpenseResponse(this.otherExpenses,this.teamID);
+    console.log("other expense data",this.otherExpenseResponse);
     this.cultivationTeamWantsToKnowOtherExpenseDataEvent.emit(this.otherExpenseResponse);
   }
   
@@ -47,7 +47,12 @@ export class OtherexpensesComponent implements OnInit {
     this.otherExpenses.push(new OtherExpensesModel("","",""));
   }
 
-  deletePreviousExpense(){
-    this.otherExpenses.pop();
+  deletePreviousExpense(i:number){
+    if(this.otherExpenses.length ==0 )
+    {
+      this.showOtherExpensesDetail = false;
+
+    }
+    this.otherExpenses.splice(i,1);
   }
 }

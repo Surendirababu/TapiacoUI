@@ -1,32 +1,48 @@
 <div class="form-group" style="text-align: center">
-  <button class="btn btn-primary" *ngIf="!showOtherExpensesDetail" (click)="showOtherExpenses()"> Click Here to Add Other Expenses</button>
+  <button class="btn btn-primary" *ngIf="!showOtherExpensesDetail || otherExpenses.length == 0" (click)="showOtherExpenses()"> Click Here to Add Other Expenses</button>
 </div>
-<div *ngFor="let expense of otherExpenses">
-  <div class="form-group" *ngIf="showOtherExpensesDetail">
-    <h5 style="text-align: center">Other Expenses</h5>
-    <div class="form-group">
-      <label>Expense Done For</label>
+
+<table style="width: 100%;border: 1px solid black;">
+
+  <tr>
+      <td class="form-group" style="text-align: center" *ngIf="otherExpenses.length != 0">
+          <label>Expense Done </label>
+        </td>
+        <td class="form-group" style="text-align: center"  *ngIf="otherExpenses.length != 0">
+          <label>Expense Amount</label>
+        </td>
+        <td class="form-group" style="text-align: center"  *ngIf="otherExpenses.length != 0">
+          <label>Expense Type</label>
+        </td>
+        <td class="form-group" style="text-align: center"  *ngIf="otherExpenses.length != 0">
+            <label>Actions</label>
+        </td>
+  </tr>
+  <tr *ngFor="let expense of otherExpenses; let i= index;" class="form-group" style="text-align: center">
+   
+    <td class="form-group" style="text-align: center">
       <select [(ngModel)]="expense.expenseDoneFor" id="category" class="form-control">
         <option value="" selected>select an option</option>
         <option *ngFor="let expenseDoneForType of expenseDoneForTypes | keyvalue" [value]="expenseDoneForType.value">{{expenseDoneForType.value}}</option>
       </select>
-    </div>
-    <div class="form-group">
-      <label>Expense Amount</label>
-      <input type="text" placeholder="Expense Amount" [(ngModel)]="expense.expenseAmount" class="form-control" />
-    </div>
-    <div class="form-group">
-      <label>Expense Type</label>
+    </td>
+    <td class="form-group" style="text-align: center">
+      <input type="text" width="48" placeholder="Expense Amount" [(ngModel)]="expense.expenseAmount" class="form-control" />
+    </td>
+    <td class="form-group" style="text-align: center">
       <select [(ngModel)]="expense.expenseDoneType" id="category" class="form-control">
         <option value="" selected>select an option</option>
         <option *ngFor="let expenseDoneType of expenseDoneTypes | keyvalue" [value]="expenseDoneType.value">{{expenseDoneType.value}}</option>
       </select>
-    </div>
-  </div>
-</div>
-<div class="form-group" *ngIf="showOtherExpensesDetail" style="text-align: center">
-      <button class="btn btn-primary" (click)="saveOtherExpenseDetails()"> Save Other Expenses </button>
-      <button class="btn btn-primary" (click)="addAnotherExpense()"> + </button>
-      <button class="btn btn-primary" (click)="deletePreviousExpense()"> - </button>
-</div>
+    </td>
+    <td class="form-group" style="text-align: center">
+      <button class="btn btn-primary" (click)="addAnotherExpense()"> Add New </button>
+      <button class="btn btn-primary" (click)="deletePreviousExpense(i)"> Delete </button>
+    </td>
+  </tr>
+</table>
 
+
+<div class="form-group" *ngIf="otherExpenses.length > 0" style="text-align: center">
+  <button class="btn btn-primary" (click)="saveOtherExpenseDetails()"> Save Other Expenses </button>
+</div>
