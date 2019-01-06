@@ -7,7 +7,9 @@ export class CultivationteamModel {
     public foodExpense: String;
     public extraAmount: String;
     public otherExpenses : OtherExpensesModel[];
-   
+    public amountPaid: String;
+    public totalAmount: String;
+    public remarks: String;
 
     public getCultivationTeamName()
     {
@@ -30,7 +32,20 @@ export class CultivationteamModel {
     public getOtherExpenses()
     {
         return this.otherExpenses;
-    } 
+    }
+    
+    public getAmountPaid()
+    {
+        return this.amountPaid;
+    }
+    public getTotalAmount()
+    {
+        return this.totalAmount;
+    }
+    public getRemarks()
+    {
+        return this.remarks;
+    }
 
     public setcultivationTeamName(cultivationTeamName: String)
     {
@@ -54,5 +69,16 @@ export class CultivationteamModel {
     {
          this.otherExpenses = otherExpenses;
     } 
-
+    public setAmountPaid(amountPaid : String)
+    {
+         this.amountPaid = amountPaid;
+    }
+    public setTotalAmount(totalAmount : String)
+    {
+         this.totalAmount = totalAmount;
+    }
+    public setRemarks(remarks : String)
+    {
+         this.remarks = remarks;
+    }
 }

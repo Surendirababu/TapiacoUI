@@ -1,0 +1,4 @@
+
+{"brokerAmountPerTon":"1000","pointAtField":"21","pointRatePerTon":"23"}
+ 
+[{"cultivationTeamName":"Team 1","cultivationAmountPerTon":"10","foodExpense":"20","extraAmount":"30","otherExpenses":[{"expenseDoneFor":"TravelAllowance","expenseAmount":"20","expenseDoneType":"ONE TIME"}],"amountPaid":"20","totalAmount":"200","remarks":"test remarks"}]

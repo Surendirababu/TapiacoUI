@@ -2,7 +2,7 @@
   <button class="btn btn-primary" *ngIf="!showOtherExpensesDetail || otherExpenses.length == 0" (click)="showOtherExpenses()"> Click Here to Add Other Expenses</button>
 </div>
 
-<table style="width: 100%;border: 1px solid black;">
+<table style="width: 100%">
 
   <tr>
       <td class="form-group" style="text-align: center" *ngIf="otherExpenses.length != 0">
@@ -18,8 +18,7 @@
             <label>Actions</label>
         </td>
   </tr>
-  <tr *ngFor="let expense of otherExpenses; let i= index;" class="form-group" style="text-align: center">
-   
+  <tr *ngFor="let expense of otherExpenses; let i= index;" class="form-group style-two" style="text-align: center">
     <td class="form-group" style="text-align: center">
       <select [(ngModel)]="expense.expenseDoneFor" id="category" class="form-control">
         <option value="" selected>select an option</option>
@@ -37,7 +36,7 @@
     </td>
     <td class="form-group" style="text-align: center">
       <button class="btn btn-primary" (click)="addAnotherExpense()"> Add New </button>
-      <button class="btn btn-primary" (click)="deletePreviousExpense(i)"> Delete </button>
+      <button class="btn btn-primary" style="background-color: red" (click)="deletePreviousExpense(i)"> Delete </button>
     </td>
   </tr>
 </table>

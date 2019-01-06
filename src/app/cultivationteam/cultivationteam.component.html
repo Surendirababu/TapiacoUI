@@ -1,12 +1,15 @@
 <div class="form-group" style="text-align: center">
-  <button class="btn btn-primary" *ngIf="!showCultivationTeamDetail" (click)="showCultivationTeam()"> Click Here to Add Cutivation Team Details</button>
+  <button class="btn btn-primary" *ngIf="!showCultivationTeamDetail || teams.length == 0" (click)="showCultivationTeam()"> Click Here to Add Cutivation Team Details</button>
 </div>
   <div *ngFor="let team of teams" >
     <h3 style="text-align: center">Cultivation {{ team.cultivationTeamName }} Details</h3>
     <div *ngIf="showCultivationTeamDetail">
       <div class="form-group" >
         <label>Cultivation Team Name</label>
-        <input type="text" [(ngModel)]="team.cultivationTeamName" class="form-control" readonly>
+        <select [(ngModel)]="team.cultivationTeamName" id="category" class="form-control">
+          <option value="" selected>select an option</option>
+          <option *ngFor="let cultivationTeamNm of cultivationTeamName | keyvalue" [value]="cultivationTeamNm.value">{{cultivationTeamNm.value}}</option>
+        </select>
       </div>
       <div class="form-group">
         <label>Cultivation Amount per Ton</label>
@@ -21,11 +24,27 @@
         <input type="text" [(ngModel)]="team.extraAmount" class="form-control" />
       </div>
       <app-otherexpenses [teamID]="team.cultivationTeamName" (cultivationTeamWantsToKnowOtherExpenseDataEvent)="cultivationTeamWantsToKnowOtherExpenseDataFn($event)"></app-otherexpenses>
+      <div class="form-group">
+        <label>Amount Paid</label>
+        <input type="text" [(ngModel)]="team.amountPaid" class="form-control" />
+      </div>
+      <div class="form-group">
+        <label>Total Amount</label>
+        <input type="text" [(ngModel)]="team.totalAmount" class="form-control" />
+      </div>
     </div>
-  </div>
+    <div class="form-group">
+      <label>Remarks</label>
+      <input type="text" [(ngModel)]="team.remarks" class="form-control" />
+    </div>
+    <div class="form-group" *ngIf="showCultivationTeamDetail" style="text-align: center">
+      <button class="btn btn-primary" (click)="saveCultivationTeamDetails()"> Save Cultivation {{team.cultivationTeamName}}</button>
+      <button class="btn btn-primary" (click)="addAnotherTeam()">Add Another Cultivation Team</button>
+      <button class="btn btn-primary" style="background-color: red" (click)="deletePreviousTeam()">Delete {{team.cultivationTeamName}}</button>
+    </div>
+    <div class="form-group" style="text-align: center">
+      <button class="btn btn-primary" style="background-color: green" *ngIf="teams.length != 0" (click)="confirmOrder()"> Update Order</button>
+    </div>
+    </div>
 
-  <div class="form-group" *ngIf="showCultivationTeamDetail" style="text-align: center">
-    <button class="btn btn-primary" (click)="saveCultivationTeamDetails()"> Save Cultivation Team</button>
-    <button class="btn btn-primary" (click)="addAnotherTeam()">+</button>
-    <button class="btn btn-primary" (click)="deletePreviousTeam()">-</button>
-  </div>
+  

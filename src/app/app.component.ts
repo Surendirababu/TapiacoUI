@@ -14,6 +14,7 @@ export class AppComponent implements OnInit {
   brokerFormSubmitted = false;
   orderFormSubmitted = false;
   cultivationTeams = 1;
+  orderFarmData:Object;
   cultivationTeamDetailsData:Object;
   
   constructor(private formBuilder: FormBuilder) { }
@@ -48,7 +49,6 @@ export class AppComponent implements OnInit {
     if (this.farmerForm.invalid) {
       return;
     }
-    console.log('Farmer Name ', this.farmerForm.value.farmerName);
     console.log('Farmer Details ' + JSON.stringify(this.farmerForm.value))
   }
 
@@ -59,7 +59,6 @@ export class AppComponent implements OnInit {
     if (this.brokerForm.invalid) {
       return;
     }
-    console.log('Broker Name ', this.brokerForm.value.brokerName);
     console.log('Broker Details ' + JSON.stringify(this.brokerForm.value))
   }
 
@@ -70,9 +69,9 @@ export class AppComponent implements OnInit {
     if (this.orderForm.invalid) {
       return;
     }
-    console.log('Broker Amount Per Ton ', this.orderForm.value.brokerAmountPerTon);
-    console.log('Order Details ' + JSON.stringify(this.orderForm.value))
-    console.log('cultivationTeamDetailsData',this.cultivationTeamDetailsData);
+    this.orderFarmData = JSON.stringify(this.orderForm.value);
+    console.log('Order Details ' + this.orderFarmData);
+    console.log('cultivationTeamDetailsData',JSON.stringify(this.cultivationTeamDetailsData));
   
   }
 

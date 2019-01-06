@@ -1,6 +1,7 @@
-import { Component, OnInit, Output,EventEmitter } from '@angular/core';
+import { Component, OnInit, Output,EventEmitter,Input } from '@angular/core';
 import { CultivationteamModel } from '../model/cultivationteamModel';
 import { OtherExpenseResponse } from '../model/OtherExpenseResponse';
+import { TeamNameEnum } from '../model/teamNameEnum';
 
 @Component({
   selector: 'app-cultivationteam',
@@ -9,7 +10,7 @@ import { OtherExpenseResponse } from '../model/OtherExpenseResponse';
 })
 export class CultivationteamComponent implements OnInit {
 
-  public cultivationTeamName: String;
+  public cultivationTeamName = [TeamNameEnum.TEAM_1,TeamNameEnum.TEAM_2,TeamNameEnum.TEAM_3];
   public cultivationAmountPerTon: String;
 
   public teams:CultivationteamModel[] =new Array<CultivationteamModel>();
@@ -23,6 +24,9 @@ export class CultivationteamComponent implements OnInit {
   public cultivationTeamModel2 : CultivationteamModel;
   public cultivationTeamModel3 : CultivationteamModel;
 
+  @Input()
+  public orderFarmData:Object;
+
   constructor() { }
 
   ngOnInit() {
@@ -32,24 +36,24 @@ export class CultivationteamComponent implements OnInit {
     this.showCultivationTeamDetail = true;
     
     this.cultivationTeamModel1 = new CultivationteamModel();
-    this.cultivationTeamModel1.setcultivationTeamName("Team1");
-    this.cultivationTeamModel1.setCultivationAmountPerTon("1");
-    this.cultivationTeamModel1.setFoodExpense("2");
-    this.cultivationTeamModel1.setExtraAmount("3");
+    this.cultivationTeamModel1.setcultivationTeamName("");
+    this.cultivationTeamModel1.setCultivationAmountPerTon("");
+    this.cultivationTeamModel1.setFoodExpense("");
+    this.cultivationTeamModel1.setExtraAmount("");
   
 
-    this.cultivationTeamModel2 = new CultivationteamModel();
-    this.cultivationTeamModel2.setcultivationTeamName("Team2");
-    this.cultivationTeamModel2.setCultivationAmountPerTon("25");
-    this.cultivationTeamModel2.setFoodExpense("50");
-    this.cultivationTeamModel2.setExtraAmount("100");
-
     this.teams.push(this.cultivationTeamModel1);
-    this.teams.push(this.cultivationTeamModel2);
   }
   saveCultivationTeamDetails() {
+    console.log("order form data---",this.orderFarmData);
     console.log("cultivation Deatil Data---",this.teams);
     this.orderWantsToKnowCultivationDataEvent.emit(this.teams);
+  }
+
+  confirmOrder(){
+    console.log("order form data---",this.orderFarmData);
+    console.log("cultivation Deatil Data---",JSON.stringify(this.teams));
+    alert("Your Order has been saved successfully!!!")
   }
   
 

@@ -1,0 +1,55 @@
+1. Dealer & Broker
+2. Commission \ ton -> BrokerAge
+3. Dealer and Broker Go to field
+4. Check point at field (20 - 30) - Threshold value 28
+                                  i)-> 25
+								  ii)->28
+								  iii) -> 30
+5. point rate - 200
+6. Ton rate -> pt.4*pt.5  (i)  25*200  
+                    (ii) 28*200  
+					(ii) 28*200
+7. Dealer deal with cultivation team 
+      per ton cultivation rate. 
+      Other one time expnse(food expnse, extra sal, transport allowance)	  
+8. Dealer assign truck 
+        - per ton truck rate
+		- Other one time expnse(food expnse,..)
+9. cultivation
+10.Extra truck rate* depends
+11. Truck loaded with goods in filed
+12. way bridge - find the number of ton (20)
+13. 5% soil waste -> net weight => pt.12 - 5% of pt.12 
+14. Other expense [1. amount , 2. Des, 3.PerTon\one ] = 
+15. settlement to farmer => (pt.13* pt.6)-(pt.10 incase paid by dealer)-(14)
+16. Total Brokerage => pt.2 * pt.12
+
+ 
+ warehouse 
+ 1. Total weight with truck =>
+ 2. check point => 24
+ 3. point rate => 220
+ 4. per ton rate
+ 5. Empty truck weight 
+ 6. net weight = 5% soil waste deduct 
+ 7. Load man charge = 
+ 8. Other expense [1. amount , 2. Des, 3.Perton\one ] to pay 
+ 9. Other expense [1. amount , 2. Des, 3.Perton\one ] to deduct
+10. settlement to second broker => (pt.3*pt.6) - pt.7 - pt.9 + pt.8 
+ 
+ 
+ second level broker = warehouse pt.10 - settlement to farmer - Total Brokerage - Dealer deal with cultivation team - Dealer assign truck
+ 
+ 
+ warehouse - dealer
+ 5,00,000 -> 4,00,000 = 1,00,000 (varavu)
+ 
+
+
+UI missed fields:
+
+tapico rate per ton  - 5*6 in page1
+truck details  p after point 4 add field - total ton in load
+ready to ware house   -- status
+UI for ready to ware house
+
